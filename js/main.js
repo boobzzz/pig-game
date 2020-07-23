@@ -20,7 +20,7 @@ const hold = selectors(document, '.hold')[0]
 
 let score = 0
 let currentScore = 0
-const maxScore = 30
+const maxScore = 100
 
 // --------------------------------Methods--------------------------------
 const togglePlayers = () => {
