@@ -1,6 +1,6 @@
 body {
     font-family: "Orbitron";
-    background: no-repeat url("/pig-game/assets/images/back.jpg");
+    background: no-repeat url("../assets/images/back.jpg");
     color: #555;
 }
 .wrapper {
@@ -99,6 +99,7 @@ body {
     transform: translateX(-50%);
 }
 .dice img {
+    display: none;
     width: 140px;
     height: 140px;
 }
