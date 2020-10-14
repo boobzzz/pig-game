@@ -40,6 +40,7 @@ const togglePlayers = () => {
             addClass(player, 'winner')
             setAttr(dice, 'src', '')
             setHtml(playerName, 'WINNER!!!')
+            dice.style.display = 'none'
             rollDice.style.display = 'none'
             hold.style.display = 'none'
         }
@@ -50,6 +51,7 @@ const onNewGame = (e) => {
     e.preventDefault()
     let playerNum = 0
 
+    dice.style.display = 'none'
     rollDice.style.display = 'block'
     hold.style.display = 'block'
 
@@ -75,6 +77,8 @@ const onRollDice = (e) => {
     e.preventDefault()
     let random = randomize()
     currentScore += random
+
+    dice.style.display = 'block'
 
     if (random === 1) togglePlayers()
 
