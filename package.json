@@ -4,6 +4,7 @@
   "description": "2 player dice game in native javascript",
   "main": "index.js",
   "scripts": {
+    "watch": "babel app/js -d app/dist --presets @babel/env -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/boobzzz/pig-game/issues"
   },
-  "homepage": "https://github.com/boobzzz/pig-game#readme"
+  "homepage": "https://github.com/boobzzz/pig-game",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5"
+  }
 }

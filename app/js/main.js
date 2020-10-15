@@ -21,11 +21,11 @@ const togglePlayers = () => {
         let playerName = U.selector(player, '.name')
         let playerScore = U.selector(player, '.score')
         let totalScore = U.getHtml(playerScore)
-        let playerCurrent = U.selector(player, '.current-score')
+        let playerCurrentScore = U.selector(player, '.current-score')
 
         if (totalScore < maxScore) {
             U.toggleClass(player, 'active')
-            U.setHtml(playerCurrent, 0)
+            U.setHtml(playerCurrentScore, 0)
         } else {
             U.addClass(player, 'winner')
             U.setAttr(dice, 'src', '')
@@ -47,12 +47,12 @@ const onNewGame = (e) => {
     for (let player of players) {
         let playerName = U.selector(player, '.name')
         let playerScore = U.selector(player, '.score')
-        let playerCurrent = U.selector(player, '.current-score')
+        let playerCurrentScore = U.selector(player, '.current-score')
 
         U.removeClass(player, 'winner')
         U.setHtml(playerName, `Player ${++playerNum}`)
         U.setHtml(playerScore, 0)
-        U.setHtml(playerCurrent, 0)
+        U.setHtml(playerCurrentScore, 0)
 
         U.getHtml(playerName) === 'Player 1'
         ? U.addClass(player, 'active')
@@ -71,8 +71,10 @@ const onRollDice = (e) => {
     if (random === 1) togglePlayers()
 
     for (let player of players) {
-        let playerCurrent = U.selector(player, '.current-score')
-        if (U.hasClass(player, 'active')) U.setHtml(playerCurrent, currentScore)
+        let playerCurrentScore = U.selector(player, '.current-score')
+        if (U.hasClass(player, 'active')) {
+            U.setHtml(playerCurrentScore, currentScore)
+        }
     }
 
     U.setAttr(dice, 'src', `assets/images/dice-${random}.png`)
@@ -90,7 +92,7 @@ const onHold = (e) => {
     togglePlayers()
 }
 
-//------------------------------ Event listeners -------------------------------
+//---------------------------------- Events ------------------------------------
 newGameBtn.addEventListener('click', onNewGame)
 rollDiceBtn.addEventListener('click', onRollDice)
 holdBtn.addEventListener('click', onHold)
