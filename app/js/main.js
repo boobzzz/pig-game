@@ -37,7 +37,7 @@ const togglePlayers = () => {
     }
 }
 
-const onNewGame = (e) => {
+const onNewGame = () => {
     let playerNum = 0
 
     dice.style.display = 'none'
@@ -62,7 +62,7 @@ const onNewGame = (e) => {
     U.setAttr(dice, 'src', '')
 }
 
-const onRollDice = (e) => {
+const onRollDice = () => {
     let random = U.randomize()
     currentScore += random
 
@@ -80,7 +80,7 @@ const onRollDice = (e) => {
     U.setAttr(dice, 'src', `assets/images/dice-${random}.png`)
 }
 
-const onHold = (e) => {
+const onHold = () => {
     for (let player of players) {
         let playerScore = U.selector(player, '.score')
         let totalScore = U.getHtml(playerScore)

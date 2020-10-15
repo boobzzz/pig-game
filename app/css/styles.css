@@ -111,19 +111,20 @@ body {
     color: #000;
 }
 .player.active .name,
-.player.active .current-label,
-.winner {
+.player.active .current-label {
     font-weight: 600;
 }
 .winner {
-    text-align: center;
+    /* text-align: center; */
     background: #eb4d4d;
     color: #fff;
 }
     .winner .name {
+        font-weight: 600;
         font-size: 44px;
     }
     .winner .score {
+        font-weight: 600;
         color: #000;
     }
     .winner .current {
