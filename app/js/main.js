@@ -18,22 +18,10 @@ const togglePlayers = () => {
     currentScore = 0
 
     for (let player of players) {
-        let playerName = U.selector(player, '.name')
-        let playerScore = U.selector(player, '.score')
-        let totalScore = U.getHtml(playerScore)
         let playerCurrentScore = U.selector(player, '.current-score')
 
-        if (totalScore < maxScore) {
-            U.toggleClass(player, 'active')
-            U.setHtml(playerCurrentScore, 0)
-        } else {
-            U.addClass(player, 'winner')
-            U.setAttr(dice, 'src', '')
-            U.setHtml(playerName, 'WINNER!!!')
-            dice.style.display = 'none'
-            rollDice.style.display = 'none'
-            hold.style.display = 'none'
-        }
+        U.toggleClass(player, 'active')
+        U.setHtml(playerCurrentScore, 0)
     }
 }
 
@@ -63,10 +51,10 @@ const onNewGame = () => {
 }
 
 const onRollDice = () => {
+    dice.style.display = 'block'
+
     let random = U.randomize()
     currentScore += random
-
-    dice.style.display = 'block'
 
     if (random === 1) togglePlayers()
 
@@ -82,14 +70,27 @@ const onRollDice = () => {
 
 const onHold = () => {
     for (let player of players) {
-        let playerScore = U.selector(player, '.score')
-        let totalScore = U.getHtml(playerScore)
-        score = parseInt(totalScore) + currentScore
+        if (U.hasClass(player, 'active')) {
+            let playerName = U.selector(player, '.name')
+            let playerScore = U.selector(player, '.score')
+            let totalScore = U.getHtml(playerScore)
 
-        if (U.hasClass(player, 'active')) U.setHtml(playerScore, score)
+            score = parseInt(totalScore) + currentScore
+
+            U.setHtml(playerScore, score)
+
+            if (score >= maxScore) {
+                U.addClass(player, 'winner')
+                U.setAttr(dice, 'src', '')
+                U.setHtml(playerName, 'WINNER!!!')
+                dice.style.display = 'none'
+                rollDice.style.display = 'none'
+                hold.style.display = 'none'
+            }
+        }
     }
 
-    togglePlayers()
+    if (score < maxScore) togglePlayers()
 }
 
 //---------------------------------- Events ------------------------------------
