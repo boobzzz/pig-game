@@ -4,7 +4,7 @@
   "description": "2 player dice game in native javascript",
   "main": "index.js",
   "scripts": {
-    "watch": "babel app/js -d app/dist --presets @babel/env -w",
+    "watch": "babel js -d dist --presets @babel/env -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
