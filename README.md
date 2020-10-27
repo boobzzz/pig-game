@@ -1,3 +1,5 @@
+![Pig Game](./app/assets/images/pig-game.jpg)
+
 ## Pig Game
 
 2 player dice game in native javascript
